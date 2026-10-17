@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selamat Ulang Tahun Nazira Wandiny Tersayang ❤️</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Fonts: Dancing Script, Playfair Display, & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <!-- Canvas Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <style>
+    :root {
+      --romantic-rose: #f43f5e;
+      --romantic-pink: #ec4899;
+      --romantic-bg: #0d0712;
+      --romantic-card: rgba(28, 14, 32, 0.75);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--romantic-bg);
+      color: #ffe4e6;
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    .font-romantic {
+      font-family: 'Dancing Script', cursive;
+    }
+
+    .font-serif-title {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+
+    /* Ambient Glow Spots */
+    .ambient-glow-1 {
+      position: fixed;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(244, 63, 94, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+      filter: blur(40px);
+    }
+
+    .ambient-glow-2 {
+      position: fixed;
+      bottom: 5%;
+      right: 5%;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(236, 72, 153, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+      filter: blur(50px);
+    }
+
+    /* Floating Hearts Animation */
+    .heart-particle {
+      position: fixed;
+      bottom: -30px;
+      pointer-events: none;
+      z-index: 1;
+      user-select: none;
+      animation: floatUp 11s linear infinite;
+      filter: drop-shadow(0 0 8px rgba(244, 63, 94, 0.5));
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(0.6) rotate(0deg);
+        opacity: 0;
+      }
+
+      15% {
+        opacity: 0.85;
+      }
+
+      85% {
+        opacity: 0.85;
+      }
+
+      100% {
+        transform: translateY(-110vh) scale(1.15) rotate(25deg);
+        opacity: 0;
+      }
+    }
+
+    /* Click Spawned Heart */
+    .click-heart {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      user-select: none;
+      animation: popUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      filter: drop-shadow(0 0 10px rgba(244, 63, 94, 0.8));
+    }
+
+    @keyframes popUp {
+      0% {
+        transform: translate(-50%, -50%) scale(0.4);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translate(-50%, -120px) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    /* Glassmorphic Romantic Cards */
+    .glass-card {
+      background: var(--romantic-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(244, 63, 94, 0.28);
+      border-radius: 24px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    }
+
+    .btn-romantic {
+      background: linear-gradient(135deg, #f43f5e 0%, #ec4899 100%);
+      color: #ffffff;
+      border: none;
+      border-radius: 50rem;
+      padding: 12px 30px;
+      font-weight: 600;
+      font-size: 14px;
+      box-shadow: 0 6px 20px rgba(244, 63, 94, 0.4);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+    }
+
+    .btn-romantic:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 10px 28px rgba(244, 63, 94, 0.6);
+      color: #ffffff;
+    }
+
+    .btn-romantic:active {
+      transform: scale(0.97);
+    }
+
+    /* Candle Flame Animation */
+    @keyframes flameFlicker {
+
+      0%,
+      100% {
+        transform: scale(1) rotate(-1deg);
+        opacity: 0.95;
+      }
+
+      25% {
+        transform: scale(1.08, 0.92) rotate(1.5deg);
+        opacity: 1;
+      }
+
+      50% {
+        transform: scale(0.94, 1.05) rotate(-0.5deg);
+        opacity: 0.85;
+      }
+
+      75% {
+        transform: scale(1.04, 0.98) rotate(1deg);
+        opacity: 1;
+      }
+    }
+
+    .flame-element {
+      width: 14px;
+      height: 22px;
+      background: radial-gradient(ellipse at bottom, #ffffff 0%, #fde047 35%, #fb923c 70%, #ea580c 100%);
+      border-radius: 50% 50% 35% 35%;
+      box-shadow: 0 0 16px rgba(251, 191, 36, 0.9);
+      animation: flameFlicker 1.8s ease-in-out infinite;
+      margin: 0 auto;
+      cursor: pointer;
+      transform-origin: bottom center;
+    }
+
+    /* Vintage Love Letter */
+    .parchment-letter {
+      background-color: #fffaf2;
+      color: #292524;
+      border: 4px solid #ebd5c1;
+      border-radius: 24px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Floating Music Widget */
+    .music-widget {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 1050;
+      background: rgba(13, 7, 18, 0.75);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(244, 63, 94, 0.35);
+      border-radius: 50rem;
+      padding: 7px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #fda4af;
+      font-size: 13px;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      transition: all 0.25s ease;
+    }
+
+    .music-widget:hover {
+      background: rgba(13, 7, 18, 0.9);
+      border-color: rgba(244, 63, 94, 0.6);
+      color: #ffffff;
+      transform: scale(1.03);
+    }
+
+    .sound-bars span {
+      display: inline-block;
+      width: 3px;
+      height: 12px;
+      background-color: #f43f5e;
+      border-radius: 2px;
+      margin: 0 1px;
+      transition: height 0.2s;
+    }
+
+    .sound-bars.playing span:nth-child(1) {
+      animation: barBounce 0.8s ease-in-out infinite alternate;
+    }
+
+    .sound-bars.playing span:nth-child(2) {
+      animation: barBounce 0.6s ease-in-out infinite alternate 0.2s;
+    }
+
+    .sound-bars.playing span:nth-child(3) {
+      animation: barBounce 0.9s ease-in-out infinite alternate 0.4s;
+    }
+
+    @keyframes barBounce {
+      0% {
+        height: 4px;
+      }
+
+      100% {
+        height: 16px;
+      }
+    }
+
+    /* Intro Overlay with Romantic Envelope */
+    #introOverlay {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, #230e25 0%, #0c050d 100%);
+      z-index: 9990;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s;
+    }
+
+    .envelope-box {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f43f5e, #ec4899);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px auto;
+      box-shadow: 0 0 35px rgba(244, 63, 94, 0.6);
+      font-size: 38px;
+      animation: pulseGlow 2.5s infinite;
+    }
+
+    @keyframes pulseGlow {
+
+      0%,
+      100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 15px rgba(244, 63, 94, 0.5));
+      }
+
+      50% {
+        transform: scale(1.06);
+        filter: drop-shadow(0 0 25px rgba(244, 63, 94, 0.8));
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Ambient Light Effects -->
+  <div class="ambient-glow-1"></div>
+  <div class="ambient-glow-2"></div>
+
+  <!-- INTRO SCREEN (Unlocks browser audio autoplay on first user touch) -->
+  <div id="introOverlay">
+    <div class="glass-card p-4 p-md-5 text-center" style="max-width: 460px; width: 100%;">
+      <div class="envelope-box">💌</div>
+      <p class="text-uppercase tracking-wider small mb-2" style="color: #fb7185; letter-spacing: 2px;">
+        17 OKTOBER · HARI SPESIALMU
+      </p>
+      <h2 class="font-serif-title text-white mb-2" style="font-size: 28px;">
+        Kejutan Manis untuk Nazira Wandiny
+      </h2>
+      <p class="small mb-4" style="color: #fda4af; line-height: 1.6;">
+        Sentuh tombol di bawah ini untuk membuka kado ucapan, melodi romantis, dan pesan yang ditulis khusus dari lubuk
+        hati terdalam.
+      </p>
+      <button class="btn btn-romantic w-100" onclick="startCelebration()">
+        Buka Kejutan Cinta ❤️
+      </button>
+      <div class="mt-3 small" style="color: rgba(253, 164, 175, 0.6); font-size: 11px;">
+        Dilengkapi musik otomatis & efek kembang api
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOATING HEARTS CONTAINER -->
+  <div id="heartsContainer"></div>
+
+  <!-- FLOATING MUSIC PLAYER BAR -->
+  <div class="music-widget" onclick="toggleMusic()" title="Putar atau Jeda Musik Romantis">
+    <div id="soundBars" class="sound-bars">
+      <span></span><span></span><span></span>
+    </div>
+    <span id="musicStatus">Musik: Aktif 🎵</span>
+  </div>
+
+  <!-- MAIN CONTAINER -->
+  <div class="container py-5 position-relative" style="z-index: 2;">
+
+    <!-- HERO HEADER -->
+    <header class="text-center my-4 my-md-5">
+      <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill mb-3"
+        style="background: rgba(244, 63, 94, 0.15); border: 1px solid rgba(244, 63, 94, 0.3); font-size: 12px; color: #fb7185; letter-spacing: 1px;">
+        <span>📅 17 Oktober</span>
+        <span>·</span>
+        <span>Hari Lahir Bidadariku Nazira</span>
+      </div>
+      <h1 class="display-3 font-serif-title text-white fw-bold">
+        Selamat Ulang Tahun, <br class="d-md-none">
+        <span class="font-romantic" style="color: #fb7185; font-size: 1.25em;">Nazira Wandiny</span> ❤️
+      </h1>
+      <p class="font-romantic display-6 mt-3" style="color: rgba(255, 228, 230, 0.85); font-size: 28px;">
+        "Semoga setiap langkah dan harimu selalu dipenuhi bahagia dan cinta."
+      </p>
+    </header>
+
+    <!-- ROW: VIRTUAL CAKE & SURAT CINTA -->
+    <div class="row g-4 justify-content-center align-items-stretch mb-5">
+
+      <!-- VIRTUAL BIRTHDAY CAKE -->
+      <div class="col-lg-6">
+        <div class="glass-card p-4 p-md-5 text-center h-100 d-flex flex-column justify-content-between">
+          <div>
+            <span class="badge rounded-pill mb-2 px-3 py-1.5"
+              style="background: rgba(244, 63, 94, 0.3); border: 1px solid rgba(244, 63, 94, 0.4); color: #ffe4e6;">
+              Tiup Lilin & Sampaikan Doa ✨
+            </span>
+            <h3 class="font-serif-title text-white mb-1">Make a Wish, Nazira!</h3>
+            <p class="small text-white-50 mb-4">
+              Pejamkan matamu sejenak, ucapkan doa terbaik di hatimu, lalu klik tombol untuk meniup lilinnya ya.
+            </p>
+          </div>
+
+          <!-- Cake Graphic -->
+          <div class="py-3 select-none">
+            <!-- Candles -->
+            <div class="d-flex justify-content-center gap-4 mb-2">
+              <div onclick="blowCandles()" style="cursor: pointer;" title="Klik untuk tiup lilin">
+                <div id="flame1" class="flame-element"></div>
+                <div style="width: 2px; height: 6px; background: #333; margin: 0 auto;"></div>
+                <div
+                  style="width: 12px; height: 42px; background: linear-gradient(#fbcfe8, #f43f5e); border-radius: 2px; margin: 0 auto; box-shadow: 0 2px 6px rgba(0,0,0,0.3);">
+                </div>
+              </div>
+              <div onclick="blowCandles()" style="cursor: pointer;" title="Klik untuk tiup lilin">
+                <div id="flame2" class="flame-element"></div>
+                <div style="width: 2px; height: 6px; background: #333; margin: 0 auto;"></div>
+                <div
+                  style="width: 12px; height: 48px; background: linear-gradient(#fbcfe8, #f43f5e); border-radius: 2px; margin: 0 auto; box-shadow: 0 2px 6px rgba(0,0,0,0.3);">
+                </div>
+              </div>
+              <div onclick="blowCandles()" style="cursor: pointer;" title="Klik untuk tiup lilin">
+                <div id="flame3" class="flame-element"></div>
+                <div style="width: 2px; height: 6px; background: #333; margin: 0 auto;"></div>
+                <div
+                  style="width: 12px; height: 42px; background: linear-gradient(#fbcfe8, #f43f5e); border-radius: 2px; margin: 0 auto; box-shadow: 0 2px 6px rgba(0,0,0,0.3);">
+                </div>
+              </div>
+            </div>
+
+            <!-- Top Cake Tier -->
+            <div
+              style="width: 170px; height: 55px; background: #ffe4e6; border-radius: 16px 16px 0 0; margin: 0 auto; box-shadow: 0 4px 12px rgba(0,0,0,0.25); position: relative; border-bottom: 4px solid #fda4af;">
+              <span class="text-dark small fw-bold font-romantic"
+                style="font-size: 20px; line-height: 55px;">19tahun</span>
+            </div>
+            <!-- Bottom Cake Tier -->
+            <div
+              style="width: 235px; height: 75px; background: #fda4af; border-radius: 20px 20px 0 0; margin: 0 auto; box-shadow: 0 6px 16px rgba(0,0,0,0.3); position: relative;">
+              <span class="font-romantic text-dark fw-bold" style="font-size: 26px; line-height: 75px;">Happy Birthday
+                Nazira</span>
+            </div>
+            <!-- Cake Plate -->
+            <div
+              style="width: 275px; height: 12px; background: #ffffff; border-radius: 50rem; margin: 0 auto; box-shadow: 0 6px 18px rgba(0,0,0,0.4);">
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <button id="blowBtn" class="btn btn-romantic" onclick="blowCandles()">
+              Tiup Lilin Sekarang 🎂
+            </button>
+            <p id="wishAlert" class="mt-3 text-warning small d-none font-romantic" style="font-size: 22px;">
+              ✨ Doamu telah terbang ke langit! Semoga bahagia selalu bersamaku, Nazira tersayang! ✨
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- VINTAGE PARCHMENT LOVE LETTER -->
+      <div class="col-lg-6">
+        <div class="parchment-letter p-4 p-md-5 h-100 d-flex flex-column justify-content-between">
+          <div>
+            <div
+              class="border-bottom border-secondary-subtle pb-3 mb-3 d-flex justify-content-between align-items-center">
+              <div>
+                <small class="text-uppercase text-muted fw-bold" style="font-size: 11px; letter-spacing: 1px;">Surat
+                  Tulus Dari Hati</small>
+                <h3 class="font-romantic text-danger mb-0" style="font-size: 34px;">Untuk Bidadariku, Nazira Wandiny
+                </h3>
+              </div>
+              <div class="text-end text-muted small" style="font-size: 12px;">
+                17 Oktober ❤️
+              </div>
+            </div>
+
+            <div
+              style="font-family: 'Playfair Display', Georgia, serif; font-size: 14.5px; line-height: 1.85; text-align: justify; color: #332a26;">
+              Selamat ulang tahun untuk bidadari terindah ku Nazira Wandiny ❤️<br><br>
+              selamat bertambah usia yaa cintakuuu. semoga di umur kamu yang sekarang, semua hal baik selalu datang ke
+              hidup kamu. semoga kamu selalu sehat, panjang umur, dilancarkan semua urusannya, dimudahkan rezekinya, dan
+              apa pun yang sedang kamu usahakan bisa tercapai satu per satu.
+              aku mungkin belum bisa jadi pacar yang sempurna, belum bisa selalu ngasih apa yang kamu mau, dan terkadang
+              masih banyak kurangnya. tapi aku mau kamu tahu kalau aku selalu bersyukur bisa kenal kamu dan punya kamu
+              di hidup aku. makasih yaa sayang, udah hadir dan jadi salah satu alasan aku buat bahagia. makasih juga
+              udah bertahan sejauh ini sama aku, dengan segala kurang dan lebihnya aku.
+
+              semoga di umur yang baru ini kamu makin dewasa, makin kuat, makin bahagia, dan selalu dikelilingi
+              orang-orang yang tulus sayang sama kamu. aku juga berharap hubungan kita bisa terus bertahan, bisa
+              sama-sama belajar jadi lebih baik, saling ngerti, saling jaga, dan saling milih satu sama lain meskipun
+              nantinya ada banyak hal yang harus kita lewatin.
+
+              sekali lagi, happy birthday yaa sayangkuuu, perempuan kesayangan aku ❤️ semoga semua doa baik yang kamu
+              simpan dalam hati bisa Allah kabulkan di waktu yang paling tepat. jangan lupa bahagia yaa, karena senyum
+              kamu itu berharga banget buat aku. aku sayang kamu, lebih dari yang kadang bisa aku ungkapin lewat
+              kata-kata. semoga aku masih bisa nemenin kamu di ulang tahun-ulang tahun berikutnya, dan semoga kita punya
+              lebih banyak cerita indah buat dikenang bareng-bareng.
+            </div>
+          </div>
+
+          <div class="border-top border-secondary-subtle pt-3 mt-4 text-end">
+            <small class="text-muted fst-italic">Dengan segenap cinta dan ketulusan,</small>
+            <div class="font-romantic text-danger" style="font-size: 30px;">A Ahmad,Kekasihmu yang Selalu Mencintaimu
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 3 ALASAN CINTA -->
+    <div class="text-center my-5">
+      <span class="badge rounded-pill px-3 py-1.5 mb-2"
+        style="background: rgba(244, 63, 94, 0.25); border: 1px solid rgba(244, 63, 94, 0.4); color: #fb7185;">
+        Dari Lubuk Hatiku
+      </span>
+      <h2 class="font-serif-title text-white">Kenapa Aku Begitu Mencintaimu, Nazira?</h2>
+    </div>
+
+    <div class="row g-4 mb-5">
+      <div class="col-md-4">
+        <div class="glass-card p-4 h-100">
+          <div class="display-6 mb-2" style="color: #fb7185;">01</div>
+          <h5 class="text-white font-serif-title">Senyumanmu yang Menenangkan</h5>
+          <p class="small text-white-50">Tak peduli seberat apa hariku, melihat senyum manismu selalu berhasil membuat
+            seluruh lelah dan bebanku sirna seketika.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="glass-card p-4 h-100">
+          <div class="display-6 mb-2" style="color: #fb7185;">02</div>
+          <h5 class="text-white font-serif-title">Ketulusan Hatimu</h5>
+          <p class="small text-white-50">Caramu memperlakukan aku dengan lembut, sabar, dan penuh kasih membuatku selalu
+            bersyukur semesta mempertemukan kita.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="glass-card p-4 h-100">
+          <div class="display-6 mb-2" style="color: #fb7185;">03</div>
+          <h5 class="text-white font-serif-title">Rumah Tempat Hatiku Pulang</h5>
+          <p class="small text-white-50">Bersamamu, aku merasa utuh, tenang, dan bisa menjadi diriku sendiri tanpa ada
+            rasa takut ataupun keraguan.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="text-center py-4 border-top border-secondary text-white-50 small mt-5">
+      Dibuat dengan cinta tulus dan abadi untuk Nazira Wandiny ❤️ Selamat Ulang Tahun!
+    </footer>
+
+  </div>
+
+  <!-- BOOTSTRAP 5 BUNDLE JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- WEB AUDIO API BACKGROUND MUSIC SYNTHESIZER -->
+  <script>
+    let audioCtx = null;
+    let isPlaying = false;
+    let timeoutId = null;
+    let noteIndex = 0;
+
+    const noteFreqs = {
+      C4: 261.63, D4: 293.66, E4: 329.63, F4: 349.23, G4: 392.00, A4: 440.00, B4: 493.88,
+      C5: 523.25, D5: 587.33, E5: 659.25, F5: 698.46, G5: 783.99
+    };
+
+    // Happy Birthday romantic acoustic score
+    const melody = [
+      { note: 'G4', dur: 0.4 }, { note: 'G4', dur: 0.3 }, { note: 'A4', dur: 0.7 }, { note: 'G4', dur: 0.7 }, { note: 'C5', dur: 0.7 }, { note: 'B4', dur: 1.4 },
+      { note: 'G4', dur: 0.4 }, { note: 'G4', dur: 0.3 }, { note: 'A4', dur: 0.7 }, { note: 'G4', dur: 0.7 }, { note: 'D5', dur: 0.7 }, { note: 'C5', dur: 1.4 },
+      { note: 'G4', dur: 0.4 }, { note: 'G4', dur: 0.3 }, { note: 'G5', dur: 0.7 }, { note: 'E5', dur: 0.7 }, { note: 'C5', dur: 0.7 }, { note: 'B4', dur: 0.7 }, { note: 'A4', dur: 1.2 },
+      { note: 'F5', dur: 0.4 }, { note: 'F5', dur: 0.3 }, { note: 'E5', dur: 0.7 }, { note: 'C5', dur: 0.7 }, { note: 'D5', dur: 0.7 }, { note: 'C5', dur: 2.2 }
+    ];
+
+    function initAudio() {
+      if (!audioCtx) {
+        const AudioClass = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioClass();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    }
+
+    function playNote(freq, dur) {
+      if (!audioCtx || !isPlaying) return;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+      gain.gain.setValueAtTime(0.001, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.18, audioCtx.currentTime + 0.04);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + dur);
+
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + dur);
+    }
+
+    function loopMelody() {
+      if (!isPlaying) return;
+      const current = melody[noteIndex % melody.length];
+      playNote(noteFreqs[current.note] || 440, current.dur);
+      noteIndex = (noteIndex + 1) % melody.length;
+      timeoutId = setTimeout(loopMelody, current.dur * 640);
+    }
+
+    function toggleMusic() {
+      initAudio();
+      const soundBars = document.getElementById('soundBars');
+      const musicStatus = document.getElementById('musicStatus');
+      if (isPlaying) {
+        isPlaying = false;
+        clearTimeout(timeoutId);
+        soundBars.classList.remove('playing');
+        musicStatus.innerText = 'Musik: Dijeda 🔇';
+      } else {
+        isPlaying = true;
+        soundBars.classList.add('playing');
+        musicStatus.innerText = 'Musik: Aktif 🎵';
+        loopMelody();
+      }
+    }
+
+    function startCelebration() {
+      const overlay = document.getElementById('introOverlay');
+      overlay.style.opacity = '0';
+      overlay.style.visibility = 'hidden';
+      setTimeout(() => overlay.remove(), 800);
+
+      initAudio();
+      isPlaying = true;
+      document.getElementById('soundBars').classList.add('playing');
+      document.getElementById('musicStatus').innerText = 'Musik: Aktif 🎵';
+      loopMelody();
+      triggerGrandConfetti();
+    }
+
+    function triggerGrandConfetti() {
+      confetti({
+        particleCount: 100,
+        spread: 90,
+        origin: { y: 0.6 },
+        colors: ['#f43f5e', '#ec4899', '#fda4af', '#fbbf24', '#ffffff']
+      });
+    }
+
+    function blowCandles() {
+      document.getElementById('flame1').style.display = 'none';
+      document.getElementById('flame2').style.display = 'none';
+      document.getElementById('flame3').style.display = 'none';
+      document.getElementById('wishAlert').classList.remove('d-none');
+      document.getElementById('blowBtn').innerText = 'Lilin Telah Ditiup ✨';
+      triggerGrandConfetti();
+    }
+
+    // Spawn gentle floating background hearts
+    function createBackgroundHearts() {
+      const container = document.getElementById('heartsContainer');
+      const emojis = ['❤️', '💖', '💕', '💗'];
+      for (let i = 0; i < 22; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart-particle';
+        heart.innerHTML = emojis[i % emojis.length];
+        heart.style.left = (Math.random() * 96) + '%';
+        heart.style.fontSize = (Math.random() * 16 + 14) + 'px';
+        heart.style.animationDuration = (Math.random() * 6 + 7) + 's';
+        heart.style.animationDelay = (Math.random() * 9) + 's';
+        container.appendChild(heart);
+      }
+    }
+    createBackgroundHearts();
+
+    // Spawn heart upon screen tap/click
+    window.addEventListener('click', (e) => {
+      if (e.target.closest('button') || e.target.closest('a') || e.target.closest('.flame-element')) return;
+      const heart = document.createElement('div');
+      heart.className = 'click-heart';
+      heart.innerHTML = '❤️';
+      heart.style.left = e.clientX + 'px';
+      heart.style.top = e.clientY + 'px';
+      heart.style.fontSize = (Math.random() * 12 + 20) + 'px';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 1200);
+    });
+  </script>
+</body>
+
+</html>
